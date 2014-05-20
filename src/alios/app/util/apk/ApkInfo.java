@@ -1,11 +1,3 @@
-/*
- * @(#)ApkInfo.java		       version: 1.0 
- * Date:2012-1-10
- *
- * Copyright (c) 2011 CFuture09, Institute of Software, 
- * Guangdong Ocean University, Zhanjiang, GuangDong, China.
- * All rights reserved.
- */
 package alios.app.util.apk;
 
 import java.util.ArrayList;
