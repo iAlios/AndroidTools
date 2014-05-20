@@ -43,27 +43,6 @@ public class ApkUtil {
 		}
 	}
 
-	public boolean makeChannelApk(String channelId, String keystorePath,
-			String apkPath, String passwd) {
-		String fileName = "assets/channel.dat";
-		File apkPathFile = new File(apkPath);
-		File file = new File(apkPathFile.getParentFile(), fileName);
-		System.out.println(file.getAbsolutePath());
-		boolean result = MStringUtils.writeToFile(channelId, file);
-		if (result == false) {
-			return result;
-		}
-		result = removeFiles(apkPath, fileName);
-		if (result == false) {
-			return result;
-		}
-		result = addFiles(apkPath, file.getAbsolutePath());
-		if (result == false) {
-			return result;
-		}
-		return signApk(keystorePath, apkPath, passwd);
-	}
-
 	public boolean signApk(String keystorePath, String apkPath, String passwd) {
 		JarSigner cJarSigner = new JarSigner();
 		cJarSigner.run(new String[] { "-verbose", "-sigalg", "MD5withRSA",
@@ -118,13 +97,12 @@ public class ApkUtil {
 		}
 	}
 
-	public boolean updateApk(String apkPath, File file, String fileName) {
+	public File updateApk(String apkPath, File file, String fileName) {
 		try {
-			ZipUtils.updateZipFile(new File(apkPath), file, fileName);
-			return true;
+			return ZipUtils.updateZipFile(new File(apkPath), file, fileName);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 	}
 
@@ -136,16 +114,6 @@ public class ApkUtil {
 			e.printStackTrace();
 			return false;
 		}
-	}
-
-	private final String[] getAppSignCmd(String... argv) {
-		String[] result = new String[argv.length + 4];
-		result[0] = "java";
-		result[1] = "-classpath";
-		result[2] = getToolsPath("tools.jar");
-		result[3] = "sun.security.tools.JarSigner";
-		System.arraycopy(argv, 0, result, 4, argv.length);
-		return result;
 	}
 
 	public List<String> getAppFileList(String app) throws Exception {
@@ -219,7 +187,7 @@ public class ApkUtil {
 			MStringUtils.println(argv);
 			process = mBuilder.command(argv).start();
 			BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(process.getInputStream(), "GBK"));
+					new InputStreamReader(process.getErrorStream(), "GBK"));
 			ArrayList<String> result = new ArrayList<String>();
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null) {

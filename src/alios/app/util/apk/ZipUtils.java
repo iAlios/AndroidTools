@@ -270,7 +270,7 @@ public class ZipUtils {
 		zipFile.close();
 	}
 
-	public static void updateZipFile(File destPath, File file, String zipName)
+	public static File updateZipFile(File destPath, File file, String zipName)
 			throws Exception {
 		String name = destPath.getName();
 		int index = name.lastIndexOf(".");
@@ -279,9 +279,10 @@ public class ZipUtils {
 			fileSuffix = name.substring(index + 1);
 			name = name.substring(0, index);
 		}
+		File updatedFile = new File(destPath.getParentFile(), name + UPDATE
+				+ "." + fileSuffix);
 		ZipOutputStream zipOutputStream = new ZipOutputStream(
-				new FileOutputStream(new File(destPath.getParentFile(), name
-						+ UPDATE + "." + fileSuffix)));
+				new FileOutputStream(updatedFile));
 		ZipFile zipFile = new ZipFile(destPath);
 		Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
 		ZipEntry cZipEntry = null;
@@ -310,6 +311,7 @@ public class ZipUtils {
 		compressFile(zipOutputStream, file, zipName);
 		zipOutputStream.close();
 		zipFile.close();
+		return updatedFile;
 	}
 
 	public static void compressFile(ZipOutputStream zipOutputStream, File file,
