@@ -1,5 +1,9 @@
 package alios.app.utils.apk;
 
+import alios.app.utils.MStringUtils;
+import alios.app.utils.ZipUtils;
+import sun.security.tools.JarSigner;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
@@ -10,8 +14,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import sun.security.tools.JarSigner;
 
 /**
  * apk工具类。封装了获取Apk信息的方法。

@@ -1,4 +1,4 @@
-package alios.app.utils.apk;
+package alios.app.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

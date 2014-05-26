@@ -1,10 +1,10 @@
 package alios.app.utils.test;
 
+import alios.app.utils.MStringUtils;
+import alios.app.utils.apk.ApkUtil;
+
 import java.io.File;
 import java.util.Date;
-
-import alios.app.utils.apk.ApkUtil;
-import alios.app.utils.apk.MStringUtils;
 
 public class Main {
 
