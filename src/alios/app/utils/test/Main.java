@@ -3,8 +3,8 @@ package alios.app.utils.test;
 import java.io.File;
 import java.util.Date;
 
-import alios.app.util.apk.ApkUtil;
-import alios.app.util.apk.MStringUtils;
+import alios.app.utils.apk.ApkUtil;
+import alios.app.utils.apk.MStringUtils;
 
 public class Main {
 

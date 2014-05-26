@@ -1,4 +1,4 @@
-package alios.app.util.apk;
+package alios.app.utils.apk;
 
 import java.util.ArrayList;
 import java.util.HashMap;

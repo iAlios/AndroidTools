@@ -1,4 +1,4 @@
-package alios.app.util.apk;
+package alios.app.utils.apk;
 
 import java.io.File;
 import java.io.FileOutputStream;
