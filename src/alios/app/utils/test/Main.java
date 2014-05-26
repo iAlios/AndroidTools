@@ -31,11 +31,11 @@ public class Main {
 		cApkUtil.updateToolsPath("./tool");
 
 		Date dDate = new Date();
-//		makeChannelApk(cApkUtil, "16", "app/sy599.p12",
-//				"app/rexueshenjiang_soumi_05192017.apk", "up1234");
+//		makeChannelApk(cApkUtil, "16", "app/keystore.key",
+//				"app/05192017.apk", "1234");
 //		
-		cApkUtil.signApk("app/sy599.p12",
-				"app/rexueshenjiang_soumi_051920176777.apk", "up1234");
+		cApkUtil.signApk("app/keystore.key",
+				"app/05192017.apk", "1234");
 		
 		System.out.println(dDate);
 		System.out.println(new Date());
