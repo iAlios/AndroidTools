@@ -22,8 +22,11 @@ public class Main {
 		if (updateFile == null) {
 			return false;
 		}
-		return cApkUtil.signApk(keystorePath, updateFile.getAbsolutePath(),
-				passwd);
+		apkPath = updateFile.getAbsolutePath();
+		String signedPath = 
+                apkPath.substring(0, apkPath.length() - 4) + "_sign.apk";
+		return cApkUtil.signApk(keystorePath, apkPath,
+				passwd,signedPath);
 	}
 
 	public static void main(String[] args) {
@@ -35,7 +38,7 @@ public class Main {
 //				"app/05192017.apk", "1234");
 //		
 		cApkUtil.signApk("app/keystore.key",
-				"app/05192017.apk", "1234");
+				"app/05192017.apk", "1234", "app/05192017-signed.apk");
 		
 		System.out.println(dDate);
 		System.out.println(new Date());

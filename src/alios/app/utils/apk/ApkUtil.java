@@ -45,13 +45,12 @@ public class ApkUtil {
 		}
 	}
 
-	public boolean signApk(String keystorePath, String apkPath, String passwd) {
+	public boolean signApk(String keystorePath, String apkPath, String passwd, String apkSignedFile) {
 		JarSigner cJarSigner = new JarSigner();
 		cJarSigner.run(new String[] { "-verbose", "-sigalg", "MD5withRSA",
 				"-digestalg", "SHA1", "-keystore", keystorePath, "-keypass",
 				passwd, "-storepass", passwd, "-storetype", "pkcs12",
-				"-sigfile", "cert", "-signedjar",
-				apkPath.substring(0, apkPath.length() - 4) + "_sign.apk",
+				"-sigfile", "cert", "-signedjar", apkSignedFile,
 				apkPath, "1" });
 		return true;
 	}
