@@ -57,12 +57,8 @@ public class ApkUtil {
 
 	public boolean checkSign(String keystorePath, String apkPath, String passwd) {
 		JarSigner cJarSigner = new JarSigner();
-		cJarSigner.run(new String[] { "-verbose", "-sigalg", "MD5withRSA",
-				"-digestalg", "SHA1", "-keystore", keystorePath, "-keypass",
-				passwd, "-storepass", passwd, "-storetype", "pkcs12",
-				"-sigfile", "cert", "-signedjar",
-				apkPath.substring(0, apkPath.length() - 4) + "_sign.apk",
-				apkPath, "1" });
+		cJarSigner.run(new String[] { "-verify", 
+				apkPath});
 		return true;
 	}
 
